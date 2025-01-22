@@ -1,34 +1,28 @@
 import pygame
 from pygame import Surface
 
+from src.buttons.create_buttons import create_quit_button
 from src.scenes.terminate import terminate
-from src.sprites.load_images import load_image
+from src.units.load_start_screen import load_start_screen
+from src.buttons.handle_event import running_handle_event
+from src.buttons.button_methods import button_methods
 
 
 def start_screen(screen: Surface) -> None:
-    intro_text = ["ЗАСТАВКА", "",
-                  "Правила игры",
-                  "Если в правилах несколько строк,",
-                  "приходится выводить их построчно"]
-
-    background = pygame.transform.scale(load_image('start_screen.jpg'), screen.get_size())
-    screen.blit(background, (0, 0))
-    font = pygame.font.Font(None, 30)
-    text_coord = 50
-    for line in intro_text:
-        string_rendered = font.render(line, 1, pygame.Color('white'))
-        intro_rect = string_rendered.get_rect()
-        text_coord += 10
-        intro_rect.top = text_coord
-        intro_rect.x = 10
-        text_coord += intro_rect.height
-        screen.blit(string_rendered, intro_rect)
-
+    load_start_screen(screen)
+    quit_button = create_quit_button(s)
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 terminate()
-            elif event.type == pygame.KEYDOWN or \
-                    event.type == pygame.MOUSEBUTTONDOWN:
-                return  # начинаем игру
+            if event.type == pygame.USEREVENT and event.button == quit_button:
+                terminate()
+
+            quit_button.handle_event(event)
+            # start_play_button.handle_event(event)
+
+        quit_button.check_hover(pygame.mouse.get_pos())
+        quit_button.draw(screen)
+        # start_play_button.check_hover(pygame.mouse.get_pos())
+        # start_play_button.draw(screen)
         pygame.display.flip()
