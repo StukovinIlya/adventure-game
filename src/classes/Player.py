@@ -1,7 +1,7 @@
 import pygame
 from pygame import Surface
 
-from src.constants.constants import get_velocity
+
 from src.sprites.sprites import all_sprites
 from src.units.load_images import load_image
 
@@ -22,7 +22,7 @@ class Player:
         mario.image = load_image(image_path)
         mario.image = pygame.transform.scale(mario.image, (width, height))
         mario.rect = mario.image.get_rect()
-        self.velocity = get_velocity()
+
         self.hero = mario
 
 

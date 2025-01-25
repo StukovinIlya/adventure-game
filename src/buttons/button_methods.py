@@ -1,7 +1,7 @@
 import pygame
 
 from src.classes.Button import Button
-from src.classes.Player import Player
+
 
 
 def methods(quit_button: Button,
