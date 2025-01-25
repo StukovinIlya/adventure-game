@@ -5,6 +5,7 @@ from pygame import Surface
 
 
 def play(screen: Surface) -> None:
+
     frame_start_time = time()
     frame_time = 0
     running = True

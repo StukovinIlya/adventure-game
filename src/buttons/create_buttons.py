@@ -1,3 +1,5 @@
+import pygame
+
 from src.classes.Button import Button
 
 
@@ -17,13 +19,13 @@ def create_quit_button() -> Button:
 
 def create_start_play_button() -> Button:
     start_play_button = Button(
-        500,
-        700,
+        1125,
+        550,
         250,
         50,
         'Play',
         'start_play.png',
         None,
-        'start_play_sound.mp3'
+        None
     )
     return start_play_button
