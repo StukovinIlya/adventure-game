@@ -5,6 +5,7 @@ from pygame import Surface
 
 from src.buttons.button_methods import methods
 from src.buttons.create_buttons import create_quit_button, create_start_play_button, create_controls_button
+from src.scenes.levels_menu import levels_menu
 from src.scenes.terminate import terminate
 from src.units.load_start_screen import load_start_screen
 from src.scenes.controls import controls
@@ -24,7 +25,7 @@ def start_screen(screen: Surface) -> None:
             if event.type == pygame.USEREVENT and event.button == quit_button:
                 terminate()
             if event.type == pygame.USEREVENT and event.button == start_play_button:
-                return
+                levels_menu(screen)
             if event.type == pygame.USEREVENT and event.button == controls_button:
                 controls(screen)
 

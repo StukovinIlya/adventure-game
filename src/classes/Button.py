@@ -15,7 +15,7 @@ class Button:
             image_path: str,
             hover_image_path=None,
             sound_path=None
-    ):
+    ) -> None:
         self.x = x
         self.y = y
         self.width = width

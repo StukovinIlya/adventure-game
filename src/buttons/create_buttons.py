@@ -46,3 +46,17 @@ def create_controls_button(screen: Surface) -> Button:
         None,
     )
     return controls_button
+
+def create_level_button(screen: Surface) -> Button:
+    widht, height = screen.get_size()
+    level_button = Button(
+        widht * 0.18,
+        height * 0.14,
+        80,
+        100,
+        None,
+        'level1.jpg',
+        None,
+        None,
+    )
+    return level_button
