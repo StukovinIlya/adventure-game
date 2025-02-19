@@ -31,8 +31,8 @@ class Player(pygame.sprite.Sprite):
                 self.rect.x -= self.min_speed
             else:
                 self.rect.x -= self.speed
-            # if spritecollideany(self, wall_group) is not None:
-            #     self.rect.x += self.speed
+            if spritecollideany(self, wall_group) is not None:
+                self.rect.x += self.speed
 
         if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
             if keys[pygame.K_LSHIFT]:
@@ -43,8 +43,8 @@ class Player(pygame.sprite.Sprite):
                 self.rect.x += self.min_speed
             else:
                 self.rect.x += self.speed
-            # if spritecollideany(self, wall_group) is not None:
-            #     self.rect.x -= self.speed
+            if spritecollideany(self, wall_group) is not None:
+                self.rect.x -= self.speed
 
         if keys[pygame.K_w] or keys[pygame.K_UP]:
             if keys[pygame.K_LSHIFT]:
@@ -55,8 +55,8 @@ class Player(pygame.sprite.Sprite):
                 self.rect.y -= self.min_speed
             else:
                 self.rect.y -= self.speed
-            # if spritecollideany(self, wall_group) is not None:
-            #     self.rect.y += self.speed
+            if spritecollideany(self, wall_group) is not None:
+                self.rect.y += self.speed
 
         if keys[pygame.K_s] or keys[pygame.K_DOWN]:
             if keys[pygame.K_LSHIFT]:
@@ -67,11 +67,10 @@ class Player(pygame.sprite.Sprite):
                 self.rect.y += self.min_speed
             else:
                 self.rect.y += self.speed
-            # if spritecollideany(self, wall_group) is not None:
-            #     self.rect.y -= self.speed
+            if spritecollideany(self, wall_group) is not None:
+                self.rect.y -= self.speed
 
     def shoot(self) -> Bullet:
         bullet = Bullet(self.rect.x, self.rect.y, 'arrow.png')
         all_sprites.add(bullet)
         bullets.add(bullet)
-
