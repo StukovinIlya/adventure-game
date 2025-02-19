@@ -1,5 +1,5 @@
 from src.classes.Bow_Tower import Bow_Tower
-from src.classes.Mob import Mob
+
 from src.classes.Player import Player
 from src.classes.Tile import Tile
 from src.sprites.sprites import all_sprites
@@ -8,9 +8,9 @@ from src.sprites.sprites import all_sprites
 def create_player(level):
     coords = None
     coords_bow_tower = None
-    mob_coords = None
+    mob_coords = []
     new_player, pos_x, pos_y = None, None, None
-
+    mobs =  None
     for y in range(len(level)):
         for x in range(len(level[y])):
             if level[y][x] == '.':
@@ -50,11 +50,12 @@ def create_player(level):
                 Tile('ground', x, y)
             elif level[y][x] == '5':
                 Tile('ground', x, y)
-                mob = Mob(x, y)
-                all_sprites.add(mob)
+                print(x, y)
+                mob_coords.append((x, y))
+
             elif level[y][x] == '@':
                 Tile('ground', x, y)
                 coords = x, y
     new_player = Player(*coords)
     bow_tower = Bow_Tower(*coords_bow_tower, image_path='bow_tower8.jpg')
-    return new_player, bow_tower, pos_x, pos_y
+    return new_player, bow_tower, pos_x, pos_y, mob_coords
