@@ -16,7 +16,7 @@ def play(screen: Surface, FPS=60) -> None:
     player_group.add(player, bow_tower)
     for coord in coords:
         print(coord)
-        enemy = Enemy(*coord)
+        enemy = Enemy(coord[0], coord[1])
         enemies.add(enemy)
     clock = pygame.time.Clock()
 
@@ -35,11 +35,11 @@ def play(screen: Surface, FPS=60) -> None:
 
         keys = pygame.key.get_pressed()
         player.move(keys)
-
+        enemies.draw(screen)
         camera.update(player)
         for sprite in all_sprites:
             camera.apply(sprite)
-        enemies.draw(screen)
+
         all_sprites.draw(screen)
         pygame.display.flip()
         clock.tick(FPS)
